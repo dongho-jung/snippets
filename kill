@@ -1,0 +1,2 @@
+# kill nth entry in jobs
+kill %n

@@ -1,0 +1,2 @@
+# curl https without verifying certificate
+curl -k https://foo.bar.com

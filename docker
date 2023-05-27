@@ -1,0 +1,8 @@
+# run one-time container with image foo/bar
+docker run --rm -it foo/bar:latest bash
+
+# build with full logs
+docker build -t foo/bar:latest --progress=plain .
+
+# build with buildx supporting multi-arch and push it
+docker buildx build . -f Dockerfile --platform=linux/arm64,linux/amd64 -t foo/bar:latest --push

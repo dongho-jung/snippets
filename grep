@@ -1,0 +1,2 @@
+# grep recursively bar excluding directory foo
+grep --exclude-dir=.foo -r 'bar' .

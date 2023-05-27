@@ -1,0 +1,8 @@
+# get secret foo/bar from secretsmanager
+aws secretsmanager get-secret-value --secret-id foo/bar
+
+# set state of alarm foo as bar with reason baz
+aws cloudwatch set-alarm-state --alarm-name "foo" --state-value bar --state-reason "baz"
+
+# login ecr
+aws ecr get-login-password | docker login --username AWS --password-stdin foo.bar.amazonaws.com

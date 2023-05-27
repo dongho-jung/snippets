@@ -1,0 +1,5 @@
+# debug node bar with image foo
+kubectl debug --image=foo -it node/bar
+
+# debug pod bar with image foo
+kubectl debug --image=foo -it bar

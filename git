@@ -1,0 +1,10 @@
+# find foobar in entire commit history
+git grep foobar $(git rev-list --all)
+
+# diff foo and bar branches
+git diff foo bar
+
+# revert commit foo
+git revert foo
+
+
