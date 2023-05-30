@@ -1,0 +1,2 @@
+# helm preview for prod env
+helm template . --dry-run --debug -f envs/prod.yaml
