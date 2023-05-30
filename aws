@@ -6,3 +6,6 @@ aws cloudwatch set-alarm-state --alarm-name "foo" --state-value bar --state-reas
 
 # login ecr
 aws ecr get-login-password | docker login --username AWS --password-stdin foo.bar.amazonaws.com
+
+# whoami
+aws sts get-caller-identity
