@@ -1,0 +1,2 @@
+# consume memory $SIZE bytes for $DURATION asynchronously
+(cat <( </dev/zero head -c $SIZE) <(sleep $DURATION) | tail) &
