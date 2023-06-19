@@ -1,0 +1,9 @@
+IFS=$'\n'
+for record in $(cat records); do
+    IFS=$'\t'
+    read -r name user password <<< "$record"
+    echo created secret: $name, $user, $password
+    read "reply?are you sure? [y/n]: "; [ "$reply" = "y" ] && echo 'go on' || exit 1
+    aws secretsmanager create-secret --name "$name" --secret-string "{\"user\":\"$user\",\"password\":\"$password\"}" --tags $TAGS
+    IFS=$'\n'
+done
