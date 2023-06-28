@@ -1,0 +1,5 @@
+# clear all caches
+while true; do
+    KEYS=$(gh actions-cache list -R foo/bar | cut -f1)
+    echo $KEYS | xargs -I{} gh actions-cache delete -R foo/bar --confirm {}
+done
