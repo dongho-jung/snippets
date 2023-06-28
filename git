@@ -3,3 +3,6 @@ git grep foobar $(git rev-list --all)
 
 # upgrade submodule
 git submodule update --recursive --remote
+
+# git clone https with ssh key
+git config --global url."git@github.com:".insteadOf "https://github.com/"
