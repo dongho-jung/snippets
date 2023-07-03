@@ -1,0 +1,3 @@
+# check key exist by tuple
+# + Conditional Formatting can't reference another sheet, so you should use INDIRECT function
+AND(IFERROR((INDEX(INDIRECT("Description!$A$2:$C"), MATCH(C5, INDIRECT("Description!C$2:C"), 0), 1)=A5) * (INDEX(INDIRECT("Description!$A$2:$C"), MATCH(C5, INDIRECT("Description!C$2:C"), 0), 2)=B5) * (INDEX(INDIRECT("Description!$A$2:$C"), MATCH(C5, INDIRECT("Description!C$2:C"), 0), 3)=C5), 0)=0,NOT(ISBLANK(C5)))
