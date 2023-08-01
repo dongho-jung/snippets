@@ -12,3 +12,6 @@ aws sts get-caller-identity
 
 # ls s3 recursively
 aws s3 ls s3://foo/bar --recursive
+
+# sync s3 bucket directory
+aws s3 sync s3://foo/bar ./baz
