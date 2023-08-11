@@ -1,2 +1,2 @@
 # mv all files except files starting with old
-mv ^old* ./old_foobar
+mv ^old* ./old_YYMMDD
