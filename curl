@@ -1,2 +1,11 @@
 # curl https without verifying certificate
 curl -k https://foo.bar.com
+
+# curl print http code
+curl foo.bar.com -w "\nhttp code: %{http_code}" 
+
+# curl POST with json file
+curl -X POST -d @file.json foo.bar.com
+
+# curl with Header
+curl -H "Content-Type: application/json" foo.bar.com
