@@ -3,3 +3,6 @@
 
 # concatanate contents of foo and bar into baz with empty line separator
 cat foo <(echo) bar > baz
+
+# export ipynb cells to concatanated string
+cat foo.ipynb | jq -r '[.cells[] | .source | join("")] | join("\n\n")'
