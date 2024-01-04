@@ -1,0 +1,2 @@
+# get scheduled event of pod named .*foo 
+{$.verb="create" && $.requestObject.reason="Scheduled" && $.objectRef.name = %.*foo%}
