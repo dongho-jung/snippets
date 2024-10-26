@@ -1,0 +1,1 @@
+find . -type f | sort | xargs -I{} bash -c 'echo -e "$(basename {})\t$(stat -f "%z" {})"'
