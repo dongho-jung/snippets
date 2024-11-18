@@ -1,2 +1,8 @@
 # consume memory $SIZE bytes for $DURATION asynchronously. $SIZE supports suffixes like 1k, 1m
 (cat <( </dev/zero head -c $SIZE) <(sleep $DURATION) | tail) &
+
+# concatanate contents of foo and bar into baz with empty line separator
+cat foo <(echo) bar > baz
+
+# export ipynb cells to concatanated string
+cat foo.ipynb | jq -r '[.cells[] | .source | join("")] | join("\n\n")'

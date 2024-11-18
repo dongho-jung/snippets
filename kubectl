@@ -3,3 +3,6 @@ kubectl debug --image=foo -it node/bar
 
 # debug pod bar with image foo
 kubectl debug --image=foo -it bar
+
+# get all secrets and its decoded data
+kubectl get secrets -o json | jq '.items[] | {(.metadata.name): (.data | to_entries[] | {(.key): (.value | @base64d)})}'

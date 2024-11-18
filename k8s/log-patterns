@@ -1,0 +1,5 @@
+# get scheduled event of pod named .*foo 
+{$.verb="create" && $.requestObject.reason="Scheduled" && $.objectRef.name = %.*foo%}
+
+# get kubelet killing event of pod named .*foo
+{$.requestObject.reason="Killing" && $.objectRef.name = %.*foo%}
