@@ -1,0 +1,25 @@
+#!/usr/bin/env bash -xe
+ECR_BASE_URL=945962818829.dkr.ecr.ap-northeast-1.amazonaws.com
+
+REPO=$REPO
+TAG=${TAG:-latest}
+UPLOADING_REPO=${UPLOADING_REPO:-$REPO}
+UPLOADING_TAG=${UPLOADING_TAG:-$TAG}
+
+docker pull --platform=linux/amd64 $REPO:$TAG
+docker tag $REPO:$TAG $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.amd64
+docker push $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.amd64
+docker image rm $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.amd64
+
+docker pull --platform=linux/arm64 $REPO:$TAG
+docker tag $REPO:$TAG $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.arm64
+docker push $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.arm64
+docker image rm $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.arm64
+
+docker manifest create --amend $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG \
+    $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.amd64 \
+    $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG.arm64
+docker manifest push $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG
+docker manifest inspect $ECR_BASE_URL/$UPLOADING_REPO:$UPLOADING_TAG
+
+docker image rm $REPO:$TAG
